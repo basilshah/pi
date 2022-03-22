@@ -1,16 +1,10 @@
-from gpiozero import Servo
-from time import sleep
+import RPi.GPIO as GPIO
+from time import sleepGPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(25, GPIO.OUT)
+pwm=GPIO.PWM(25, 50)
+pwm.start(0)
 
-servo = Servo(25)
-
-
-print("strt")
-servo.min()
-sleep(5)
-servo.mid()
-sleep(0.5)
-servo.max()
-sleep(0.5)
 
 def SetAngle(angle):
     duty = angle / 18 + 2
